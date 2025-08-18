@@ -69,7 +69,7 @@ pub fn get_default_users() -> HashMap<String, User> {
         "admin".to_string(),
         User::new("admin", "admin", LoginRole::Admin),
     );
-    users.insert("ana".to_string(), User::new("ana", "123", LoginRole::Admin));
+    users.insert("ana".to_string(), User::new("ana", "123", LoginRole::User));
     users
 }
 
@@ -86,6 +86,12 @@ pub fn get_users() -> HashMap<String, User> {
         std::fs::write(users_path, users_json).unwrap();
         users
     }
+}
+
+pub fn save_users(users: HashMap<String, User>) {
+    let user_path = Path::new("users.json");
+    let users_json = serde_json::to_string(&users).unwrap();
+    std::fs::write(user_path, users_json).unwrap();
 }
 
 pub fn login(username: &str, password: &str) -> Option<LoginAction> {

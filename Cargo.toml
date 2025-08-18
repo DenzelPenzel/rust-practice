@@ -14,4 +14,4 @@ members = [
     "guessing_game",
     "local-cache",
     "session1/auth"
-    , "session1/login"]
+    , "session1/login", "session1/login_manager"]
