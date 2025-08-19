@@ -33,7 +33,7 @@ enum Commands {
     ChangePassword {
         username: String,
         new_password: String,
-    }
+    },
 }
 
 fn list_user() {
@@ -46,7 +46,7 @@ fn list_user() {
         .for_each(|(_, user)| println!("{:<20}{:<20?}", user.username, user.role));
 }
 
-fn add_user(username: String, password: String, admin:bool) {
+fn add_user(username: String, password: String, admin: bool) {
     let mut users = get_users();
     let role = if admin {
         LoginRole::Admin
@@ -91,13 +91,14 @@ fn main() {
             username,
             password,
             admin,
-        }) => {
-            add_user(username, password, admin.unwrap_or(false))
-        }
+        }) => add_user(username, password, admin.unwrap_or(false)),
         Some(Commands::Delete { username }) => {
             delete_user(username);
         }
-        Some(Commands::ChangePassword { username, new_password }) => {
+        Some(Commands::ChangePassword {
+            username,
+            new_password,
+        }) => {
             change_password(username, new_password);
         }
         None => {

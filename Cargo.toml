@@ -13,5 +13,12 @@ members = [
     "session1/vars",
     "guessing_game",
     "local-cache",
-    "session1/auth"
-    , "session1/login", "session1/login_manager"]
+    "session1/auth",
+    "session1/login",
+    "session1/login_manager",
+    "session2",
+    "session2/divide_work",
+    "session2/scope",
+    "session2/gun",
+    "session2/mutexes",
+]
