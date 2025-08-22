@@ -26,7 +26,7 @@ impl Solution {
                 node = node.children[bit as usize].get_or_insert(Box::new(BitwiseTrie::new()));
             }
             node.val = x;
-        } 
+        }
 
         for &x in nums.iter() {
             let mut node = &trie;
@@ -47,4 +47,8 @@ impl Solution {
 
         res
     }
+}
+
+fn main() {
+    println!("Hello, world!");
 }

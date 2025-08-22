@@ -21,4 +21,9 @@ members = [
     "session2/scope",
     "session2/gun",
     "session2/mutexes",
+    "session2/deadlock",
+    "bus_routes",
+    "maximum_xor_two_numbers_in_array", "fruits_into_baskets_ii",
+    "session2/dmap",
+    "session2/parking"
 ]
