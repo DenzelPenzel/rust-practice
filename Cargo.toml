@@ -25,5 +25,8 @@ members = [
     "bus_routes",
     "maximum_xor_two_numbers_in_array", "fruits_into_baskets_ii",
     "session2/dmap",
-    "session2/parking"
+    "session2/parking",
+    "session2/chans",
+    "session2/workers",
+    "session2/workers2"
 ]

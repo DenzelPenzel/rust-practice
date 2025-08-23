@@ -21,7 +21,6 @@ fn main() {
         threads.push(thread_handle);
     }
 
-
     loop {
         println!("Thread to unpark (0-9) or q to quit");
         let input = read_line();
@@ -35,5 +34,4 @@ fn main() {
             }
         }
     }
-
 }
