@@ -56,7 +56,6 @@ use std::ptr::NonNull;
 use std::sync::{Arc, Mutex};
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 
-
 #[derive(Clone)]
 struct CacheEntity<T> {
     key: String,

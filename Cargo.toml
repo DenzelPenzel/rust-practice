@@ -11,8 +11,6 @@ edition = "2021"
 [workspace]
 members = [
     "session1/vars",
-    "guessing_game",
-    "local-cache",
     "session1/auth",
     "session1/login",
     "session1/login_manager",
@@ -22,11 +20,12 @@ members = [
     "session2/gun",
     "session2/mutexes",
     "session2/deadlock",
-    "bus_routes",
-    "maximum_xor_two_numbers_in_array", "fruits_into_baskets_ii",
     "session2/dmap",
     "session2/parking",
     "session2/chans",
     "session2/workers",
-    "session2/workers2"
+    "session2/workers2",
+    "session2/arcs",
+    "local-cache",
+    "rustlings"
 ]

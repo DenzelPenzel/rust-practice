@@ -35,7 +35,7 @@ fn main() {
             let mut lock = WORK_QUEUE.lock().unwrap();
             let len = lock.len();
             println!("Work queue length: {len}");
-            
+
             if len < 5 {
                 lock.push_back("Hello".to_string());
                 true
