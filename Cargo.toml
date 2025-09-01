@@ -26,6 +26,10 @@ members = [
     "session2/workers",
     "session2/workers2",
     "session2/arcs",
+    "session2/affinity",
+    "session2/tprio",
+    "session2/rayon_iters",
+    "session2/rayon_scopes",
     "local-cache",
     "rustlings"
 ]
