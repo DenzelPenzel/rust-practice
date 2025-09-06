@@ -15,7 +15,7 @@ fn factorial(num: u64) -> u64 {
     } else if num == 1 {
         num
     } else {
-        num * factorial(num  - 1)
+        num * factorial(num - 1)
     }
 }
 

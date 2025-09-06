@@ -55,7 +55,6 @@ fn main() -> Result<(), Box<dyn Error>> {
     let res = PositiveNonzeroInteger::new(x)?;
 
     println!("output={:?}", res);
-    
-    
+
     Ok(())
 }

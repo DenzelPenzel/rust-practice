@@ -51,7 +51,6 @@ impl From<&str> for Person {
             name: name.to_string(),
             age: age.unwrap(),
         }
-
     }
 }
 

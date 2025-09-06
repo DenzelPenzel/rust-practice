@@ -1,8 +1,8 @@
-use std::time::Instant;
 use rayon::prelude::*;
+use std::time::Instant;
 
 fn is_prime(n: u32) -> bool {
-    (2 ..= n / 2).into_par_iter().all(|i| n % i != 0)
+    (2..=n / 2).into_par_iter().all(|i| n % i != 0)
 }
 
 fn main() {
@@ -12,7 +12,7 @@ fn main() {
 
     let now = Instant::now();
     let nums = (0..1000).collect::<Vec<u32>>();
-    let mut primes: Vec<&u32> = nums.par_iter().filter(|i| is_prime(**i)).collect(); 
+    let mut primes: Vec<&u32> = nums.par_iter().filter(|i| is_prime(**i)).collect();
     primes.par_sort_unstable();
 
     let elapsed = now.elapsed().as_secs_f32();

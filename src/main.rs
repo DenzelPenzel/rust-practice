@@ -1,3 +1,8 @@
+use algos::lru::LRUCache;
+
+
 fn main() {
-    println!("Hello, world!");
+    let mut cache = LRUCache::new(2);
+    cache.put(1, 1);
+    println!("Value {}", cache.get(1));
 }

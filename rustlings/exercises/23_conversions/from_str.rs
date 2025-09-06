@@ -54,7 +54,10 @@ impl FromStr for Person {
         if age.is_err() {
             return Err(ParsePersonError::ParseInt(age.err().unwrap()));
         }
-        Ok(Person { name: name.to_string(), age: age.unwrap() })
+        Ok(Person {
+            name: name.to_string(),
+            age: age.unwrap(),
+        })
     }
 }
 

@@ -15,7 +15,7 @@ fn divide(a: i64, b: i64) -> Result<i64, DivisionError> {
         Err(DivisionError::DivideByZero)
     } else if a == i64::MIN && b == -1 {
         Err(DivisionError::IntegerOverflow)
-    } else if a % b !=  0 {
+    } else if a % b != 0 {
         Err(DivisionError::NotDivisible)
     } else {
         Ok(a / b)
@@ -24,7 +24,7 @@ fn divide(a: i64, b: i64) -> Result<i64, DivisionError> {
 
 // TODO: Add the correct return type and complete the function body.
 // Desired output: `Ok([1, 11, 1426, 3])`
-fn result_with_list() ->  Result<Vec<i64>, DivisionError> {
+fn result_with_list() -> Result<Vec<i64>, DivisionError> {
     let numbers = [27, 297, 38502, 81];
     let division_results = numbers.into_iter().map(|n| divide(n, 27));
 

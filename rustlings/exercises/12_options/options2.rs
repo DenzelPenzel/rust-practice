@@ -33,7 +33,7 @@ mod tests {
             assert_eq!(integer, cursor);
             cursor -= 1;
         }
-        
+
         assert_eq!(cursor, 0);
     }
 }

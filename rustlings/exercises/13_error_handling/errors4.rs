@@ -14,7 +14,7 @@ impl PositiveNonzeroInteger {
         match value {
             x if x < 0 => Err(CreationError::Negative),
             x if x == 0 => Err(CreationError::Zero),
-            x => Ok(Self(x as u64))
+            x => Ok(Self(x as u64)),
         }
     }
 }

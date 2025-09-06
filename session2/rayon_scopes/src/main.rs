@@ -29,14 +29,12 @@ fn main() {
     //         });
     //     }
     // });
-    
 
     pool.scope(|scope| {
         scope.spawn_broadcast(|_score, context| {
             println!("Hello from thread {}", context.index());
         });
     });
-
 
     println!("Done");
 }
