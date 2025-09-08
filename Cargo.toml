@@ -7,31 +7,40 @@ edition = "2021"
 
 [dependencies]
 algos = { path = "algos" }
+tokio = { workspace = true, features = ["full"] }
 
 
 [workspace]
 members = [
     "algos",
-    "session1/vars",
-    "session1/auth",
-    "session1/login",
-    "session1/login_manager",
-    "session2",
-    "session2/divide_work",
-    "session2/scope",
-    "session2/gun",
-    "session2/mutexes",
-    "session2/deadlock",
-    "session2/dmap",
-    "session2/parking",
-    "session2/chans",
-    "session2/workers",
-    "session2/workers2",
-    "session2/arcs",
-    "session2/affinity",
-    "session2/tprio",
-    "session2/rayon_iters",
-    "session2/rayon_scopes",
-    "local-cache",
-    "rustlings"
+    "init/vars",
+    "init/auth",
+    "init/login",
+    "init/login_manager",
+    "systhreads",
+    "systhreads/divide_work",
+    "systhreads/scope",
+    "systhreads/gun",
+    "systhreads/mutexes",
+    "systhreads/deadlock",
+    "systhreads/dmap",
+    "systhreads/parking",
+    "systhreads/chans",
+    "systhreads/workers",
+    "systhreads/workers2",
+    "systhreads/arcs",
+    "systhreads/affinity",
+    "systhreads/tprio",
+    "systhreads/rayon_iters",
+    "systhreads/rayon_scopes",
+    "rustlings", 
+    "asyncs",
+    "asyncs/async_hello",
+    "asyncs/blocking",
+    "asyncs/testing",
+    "asyncs/errors",
+    "asyncs/fileio"
 ]
+
+[workspace.dependencies]
+tokio = { version = "1.43", features = ["full"] }

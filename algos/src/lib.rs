@@ -1,5 +1,7 @@
-pub mod lru;
-pub mod lru_bitmap;
+pub mod collections;
+pub mod graph;
+pub mod numbers;
+pub mod problems;
 
 pub fn add(left: u64, right: u64) -> u64 {
     left + right
