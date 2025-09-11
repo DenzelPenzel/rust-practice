@@ -1,0 +1,11 @@
+[package]
+name = "logspan"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.99"
+async-recursion = "1.1.1"
+tokio = { workspace = true, features = ["full"] }
+tracing = "0.1.41"
+tracing-subscriber = "0.3.20"

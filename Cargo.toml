@@ -39,7 +39,18 @@ members = [
     "asyncs/blocking",
     "asyncs/testing",
     "asyncs/errors",
-    "asyncs/fileio"
+    "asyncs/fileio",
+    "asyncs/restclient",
+    "asyncs/tcpserver",
+    "asyncs/channels",
+    "asyncs/async_mutex",
+    "asyncs/select",
+    "asyncs/tokio_select",
+    "asyncs/rec",
+    "asyncs/logspan",
+    "asyncs/db",
+    "asyncs/web_service",
+    "asyncs/image_service"
 ]
 
 [workspace.dependencies]
