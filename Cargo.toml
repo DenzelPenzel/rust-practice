@@ -54,7 +54,8 @@ members = [
     "mem",
     "mem/smart_pointer",
     "mem/refc",
-    "mem/interior_mut"
+    "mem/interior_mut",
+    "mem/traits"
     ]
 
 [workspace.dependencies]
