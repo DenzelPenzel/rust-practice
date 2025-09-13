@@ -50,8 +50,12 @@ members = [
     "asyncs/logspan",
     "asyncs/db",
     "asyncs/web_service",
-    "asyncs/image_service"
-]
+    "asyncs/image_service", 
+    "mem",
+    "mem/smart_pointer",
+    "mem/refc",
+    "mem/interior_mut"
+    ]
 
 [workspace.dependencies]
 tokio = { version = "1.43", features = ["full"] }
