@@ -49,7 +49,54 @@ where K: Eq + std::hash::Hash,
         let values = self.map.entry(key).or_insert(Vec::new());
         values.push(value);
     }
+
+    fn iter(&self) -> HashMapBucketIter<K, V> {
+        let mut key_iter = self.map.iter();
+        let current_map_entry = key_iter.next();
+
+        HashMapBucketIter { 
+            key_iter, 
+            current_map_entry, 
+            current_index: 0 
+        }
+    }
 }
+
+struct HashMapBucketIter<'a, K, V> {
+    key_iter: std::collections::hash_map::Iter<'a, K, Vec<V>>,
+    current_map_entry: Option<(&'a K, &'a Vec<V>)>,
+    current_index: usize,
+}
+
+impl <'a, K, V> Iterator for HashMapBucketIter<'a, K, V> {
+    type Item = (&'a K, &'a V);
+
+    fn next(&mut self) -> Option<Self::Item> {
+        if let Some((key, vals)) = self.current_map_entry {
+            if self.current_index < vals.len() {
+                let val = &vals[self.current_index];
+                self.current_index += 1;
+                return Some((key, val));
+            } else {
+                self.current_map_entry = self.key_iter.next();
+                self.current_index = 0;
+
+                if let Some((key, vals)) = self.current_map_entry {
+                    if self.current_index < vals.len() {
+                        let val = &vals[self.current_index];
+                        self.current_index += 1;
+                        return Some((key, val));
+                    }
+                }
+            }
+        }
+
+        None
+    }
+}
+
+
+
 
 fn main() {
     just_print("Hello", "World");
@@ -70,4 +117,10 @@ fn main() {
     bucket.insert("banana", 2);
     bucket.insert("apple", 3);
     println!("{bucket:#?}");
+
+
+    // ================================================
+
+    let contents: Vec<_> = bucket.iter().collect();
+    println!("{contents:?}");
 }
