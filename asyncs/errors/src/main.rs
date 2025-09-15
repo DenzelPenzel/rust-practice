@@ -1,5 +1,5 @@
-use std::path::Path;
 use serde::Deserialize;
+use std::path::Path;
 use thiserror::Error;
 
 #[derive(Error, Debug)]
@@ -15,7 +15,6 @@ enum UserError {
     #[error("Other error: {0}")]
     Other(std::io::Error),
 }
-
 
 fn maybe_read() -> Result<String, std::io::Error> {
     let f = Path::new("myfile.txt");
@@ -43,17 +42,12 @@ type GenericResult<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
 fn load_user() -> Result<Vec<User>, UserError> {
     let f = Path::new("user.json");
-    let raw_data = std::fs::read_to_string(f).map_err(|_| {
-        UserError::NoUsers
-    })?;
-    let users = serde_json::from_str(&raw_data).map_err(|_| {
-        UserError::NoUsers
-    })?;
+    let raw_data = std::fs::read_to_string(f).map_err(|_| UserError::NoUsers)?;
+    let users = serde_json::from_str(&raw_data).map_err(|_| UserError::NoUsers)?;
     Ok(users)
 }
 
 fn main() {
-    
     let users = load_user();
     match users {
         Ok(users) => println!("Users: {:?}", users.len()),
@@ -69,9 +63,9 @@ fn main() {
     match content {
         Ok(content) => println!("Content: {}", content),
         Err(e) => match e.kind() {
-            std::io::ErrorKind::NotFound => println!("File not found"),            
+            std::io::ErrorKind::NotFound => println!("File not found"),
             std::io::ErrorKind::PermissionDenied => println!("Permission denied"),
             _ => println!("Other error: {}", e),
-        }
+        },
     }
 }

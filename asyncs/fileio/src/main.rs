@@ -1,32 +1,38 @@
-use std::{io::{self, BufRead}, path::Path, fs::File};
+use std::{
+    fs::File,
+    io::{self, BufRead},
+    path::Path,
+};
 
 use anyhow::Result;
 
 fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
-where P: AsRef<Path>, {
+where
+    P: AsRef<Path>,
+{
     let file = File::open(filename)?;
     Ok(io::BufReader::new(file).lines())
 }
 
 async fn read_count(filename: String) -> Result<usize> {
     let mut line_count = 0;
-    
+
     if let Ok(lines) = read_lines(filename) {
-       lines.for_each(|line| {
-        if let Ok(line) = line {
-            if !line.trim().is_empty() {
-                line_count += 1;
+        lines.for_each(|line| {
+            if let Ok(line) = line {
+                if !line.trim().is_empty() {
+                    line_count += 1;
+                }
             }
-        }
-       });
+        });
     }
     Ok(line_count)
 }
 
 async fn async_read_count(filename: String) -> Result<usize> {
+    use tokio::fs::File;
     use tokio::io::AsyncBufReadExt;
     use tokio::io::BufReader;
-    use tokio::fs::File;
 
     println!("Async reading file: {}", filename);
     let mut line_count = 0;

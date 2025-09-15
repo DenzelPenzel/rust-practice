@@ -5,7 +5,7 @@ async fn hello() {
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    let subs =tracing_subscriber::FmtSubscriber::new();
+    let subs = tracing_subscriber::FmtSubscriber::new();
     tracing::subscriber::set_global_default(subs)?;
 
     tracing::info!("Starting up");

@@ -1,39 +1,89 @@
-fn borrow<'a>(x: &'a i32, y: &'a i32) -> &'a i32 {
-    x
+use std::{any::Any, fmt};
+
+struct Point {
+    x: i32,
+    y: i32,
 }
 
-struct Cat(String);
-
-impl Cat {
-    fn feed(&mut self) {
-        self.0 = format!("{} is fed", self.0);
+impl fmt::Debug for Point {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        f.debug_struct("Point")
+            .field("x", &self.x)
+            .field("y", &self.y)
+            .finish()
     }
 }
 
-struct CatFeeder<'a> {
-    cat: &'a mut Cat,
+trait Animal: std::fmt::Debug {
+    fn speak(&self);
 }
 
-impl<'a> CatFeeder<'a> {
-    fn feed_cat(&mut self) {
-        self.cat.feed();
+#[derive(Debug)]
+struct Cat;
+
+impl Animal for Cat {
+    fn speak(&self) {
+        println!("Meow");
+    }
+}
+
+#[derive(Debug)]
+struct Dog;
+
+impl Animal for Dog {
+    fn speak(&self) {
+        println!("Woof");
+    }
+}
+
+fn make_animal_speak(animal: &impl Animal) {
+    animal.speak();
+    animal.speak();
+    println!("Animal: {animal:?}");
+}
+
+fn make_animal() -> impl Animal {
+    Cat
+}
+
+trait DowncastableAnimal {
+    fn speak(&self) {
+        println!("No idea");
+    }
+
+    fn as_any(&self) -> &dyn Any;
+}
+
+struct Tortoise;
+
+impl DowncastableAnimal for Tortoise {
+    fn as_any(&self) -> &dyn Any {
+        self
     }
 }
 
 fn main() {
-    let x = 10;
-    borrow(&x, &x);
+    let cat = Cat;
+    cat.speak();
 
-    let mut cats = vec![Cat(String::from("Whiskers")), Cat(String::from("Tom"))];
+    let dog = Dog;
+    dog.speak();
 
-    let mut feeders = Vec::new();
+    make_animal_speak(&cat);
+    make_animal_speak(&dog);
 
-    // get reference for the each cat
-    for cat in cats.iter_mut() {
-        feeders.push(CatFeeder { cat: cat });
-    }
+    let animal = make_animal();
 
-    feeders.iter_mut().for_each(|f| {
-        f.feed_cat();
+    let animals: Vec<Box<dyn Animal>> = vec![Box::new(Cat), Box::new(Dog)];
+
+    animals.iter().for_each(|f| {
+        f.speak();
     });
+
+    let more_animals: Vec<Box<dyn DowncastableAnimal>> = vec![Box::new(Tortoise)];
+    for animal in more_animals {
+        if let Some(tortoise) = animal.as_any().downcast_ref::<Tortoise>() {
+            println!("I am a tortoise");
+        }
+    }
 }

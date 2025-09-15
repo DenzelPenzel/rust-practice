@@ -1,5 +1,5 @@
-use tokio::sync::{mpsc, broadcast};
 use std::time::Duration;
+use tokio::sync::{broadcast, mpsc};
 
 async fn receiver(mut rx: mpsc::Receiver<u32>, mut broadcast_rx: broadcast::Receiver<u32>) {
     loop {

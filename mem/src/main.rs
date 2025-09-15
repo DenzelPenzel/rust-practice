@@ -9,7 +9,6 @@ impl User {
     }
 }
 
-
 impl Drop for User {
     fn drop(&mut self) {
         println!("Dropping User: {:?}", self.idx);
@@ -17,7 +16,7 @@ impl Drop for User {
 }
 
 fn move_me(x: User) {
-  // do nothing
+    // do nothing
 }
 
 struct HasDrop {
@@ -35,7 +34,7 @@ fn main() {
         let user2 = User::new(2);
         println!("User2: {:?}", user2.idx);
     }
-    
+
     move_me(user);
 
     let has_drop = HasDrop { x: User::new(3) };
@@ -58,7 +57,7 @@ fn alloc_mem_with_libc() {
 }
 
 fn alloc_mem_with_rust() {
-    use std::alloc::{alloc, dealloc, Layout};
+    use std::alloc::{Layout, alloc, dealloc};
 
     unsafe {
         let layout = Layout::new::<u16>();
@@ -66,7 +65,6 @@ fn alloc_mem_with_rust() {
 
         *ptr = 42;
         assert_eq!(42, *ptr);
-
 
         // free the memory
         dealloc(ptr, layout);

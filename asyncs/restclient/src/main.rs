@@ -1,6 +1,5 @@
 use serde::Deserialize;
 
-
 #[derive(Debug, Deserialize)]
 struct Weather {
     latitude: f64,
@@ -20,6 +19,6 @@ async fn main() -> anyhow::Result<()> {
     let resp = reqwest::get(URL).await?;
     let weather: serde_json::Value = resp.json().await?;
     println!("{weather:#?}");
-    
+
     Ok(())
 }

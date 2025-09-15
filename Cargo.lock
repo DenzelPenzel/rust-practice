@@ -978,6 +978,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "gen"
+version = "0.1.0"
+
+[[package]]
 name = "generic-array"
 version = "0.14.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1478,6 +1482,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7943c866cc5cd64cbc25b2e01621d07fa8eb2a1a23160ee81ce38704e97b8ecf"
 
 [[package]]
+name = "iters"
+version = "0.1.0"
+
+[[package]]
 name = "itertools"
 version = "0.12.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1570,6 +1578,10 @@ dependencies = [
  "pkg-config",
  "vcpkg",
 ]
+
+[[package]]
+name = "lifetime"
+version = "0.1.0"
 
 [[package]]
 name = "linux-raw-sys"

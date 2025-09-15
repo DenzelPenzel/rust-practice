@@ -1,4 +1,4 @@
-use axum::{extract::Multipart, response::Html, routing::get, Extension, Router};
+use axum::{Extension, Router, extract::Multipart, response::Html, routing::get};
 use sqlx::Row;
 use std::net::SocketAddr;
 

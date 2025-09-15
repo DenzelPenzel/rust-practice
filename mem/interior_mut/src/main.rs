@@ -1,5 +1,8 @@
 use core::str;
-use std::{cell::RefCell, sync::{Arc, Mutex}};
+use std::{
+    cell::RefCell,
+    sync::{Arc, Mutex},
+};
 
 struct SharedData {
     data: Mutex<String>,
@@ -29,7 +32,6 @@ fn move_data(x: Arc<MyData>) {
     let mut data = x.data.borrow_mut();
     data.push_str(" World");
 }
-
 
 fn main() {
     let my_shared = Arc::new(SharedData::new("Hello"));

@@ -1,6 +1,6 @@
-use std::pin::Pin;
-use std::future::Future;
 use async_recursion::*;
+use std::future::Future;
+use std::pin::Pin;
 
 #[async_recursion]
 async fn fibonacci(n: u32) -> u32 {

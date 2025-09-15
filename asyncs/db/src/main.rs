@@ -1,4 +1,4 @@
-use sqlx::{Row, FromRow};
+use sqlx::{FromRow, Row};
 
 #[derive(FromRow, Debug)]
 struct Message {
@@ -6,31 +6,26 @@ struct Message {
     message: String,
 }
 
-
 async fn update_message(id: i64, message: &str, pool: &sqlx::SqlitePool) -> anyhow::Result<()> {
     sqlx::query("UPDATE messages SET message = ? WHERE id = ?")
         .bind(message)
         .bind(id)
         .execute(pool)
         .await?;
-    
+
     Ok(())
 }
-
-
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     dotenv::dotenv()?;
-    
+
     let db_url = std::env::var("DATABASE_URL")?;
 
     let pool = sqlx::SqlitePool::connect(&db_url).await?;
 
     // Run migrations
-    sqlx::migrate!("./migrations")
-        .run(&pool)
-        .await?;
+    sqlx::migrate!("./migrations").run(&pool).await?;
 
     // let messages = sqlx::query("SELECT id, message FROM messages")
     //     .map(|row: sqlx::sqlite::SqliteRow| {
@@ -51,7 +46,6 @@ async fn main() -> anyhow::Result<()> {
 
     println!("Messages: {:#?}", messages);
 
-
     println!("================");
     println!("Stream");
 
@@ -59,8 +53,8 @@ async fn main() -> anyhow::Result<()> {
 
     update_message(4, "Hello, Jekson!", &pool).await?;
 
-    let mut message_stream = sqlx::query_as::<_, Message>("SELECT id, message FROM messages")
-        .fetch(&pool);
+    let mut message_stream =
+        sqlx::query_as::<_, Message>("SELECT id, message FROM messages").fetch(&pool);
 
     while let Some(message) = message_stream.try_next().await? {
         println!("{message:?}");

@@ -55,8 +55,9 @@ members = [
     "mem/smart_pointer",
     "mem/refc",
     "mem/interior_mut",
-    "mem/traits"
-    ]
+    "mem/traits",
+    "mem/lifetime"
+    , "gen", "iters"]
 
 [workspace.dependencies]
 tokio = { version = "1.43", features = ["full"] }

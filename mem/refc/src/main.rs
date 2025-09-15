@@ -1,5 +1,5 @@
-use std::rc::Rc;
 use std::cell::RefCell;
+use std::rc::Rc;
 use std::sync::{Arc, Mutex};
 
 #[derive(Debug)]
@@ -47,7 +47,6 @@ fn main() {
 
     println!("Final value: {:?}", my_shared.borrow());
     println!("Done_1");
-
 
     // arc example
     println!("================");

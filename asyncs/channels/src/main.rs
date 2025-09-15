@@ -35,7 +35,7 @@ async fn main() {
         tx.send(Command::Print(format!("Hello {counter}"))).unwrap();
         counter += 1;
     }
-    
+
     let (tx, mut rx) = tokio::sync::broadcast::channel::<String>(16);
 
     tx.send("hello".to_string()).unwrap();

@@ -1,5 +1,5 @@
-use tokio::sync::Mutex;
 use once_cell::sync::Lazy;
+use tokio::sync::Mutex;
 
 static SHARED_DATA: Lazy<Mutex<u32>> = Lazy::new(|| Mutex::new(0));
 

@@ -1,4 +1,3 @@
-
 use std::time::Duration;
 
 async fn do_work() {

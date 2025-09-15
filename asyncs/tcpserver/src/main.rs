@@ -1,5 +1,5 @@
-use std::time::Duration;
 use anyhow::Ok;
+use std::time::Duration;
 use tokio::{
     io::{AsyncReadExt, AsyncWriteExt},
     net::{TcpListener, TcpStream},
@@ -13,7 +13,10 @@ async fn tcp_client() -> anyhow::Result<()> {
     let mut buf = vec![0u8; 1024];
     let bytes_read = stream.read(&mut buf).await?;
 
-    println!("Received from server: {}", String::from_utf8_lossy(&buf[0..bytes_read]));
+    println!(
+        "Received from server: {}",
+        String::from_utf8_lossy(&buf[0..bytes_read])
+    );
 
     Ok(())
 }

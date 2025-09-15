@@ -3,9 +3,8 @@ fn main() {
 }
 
 async fn double(n: i32) -> i32 {
-    n * 2   
+    n * 2
 }
-
 
 #[cfg(test)]
 mod tests {
@@ -18,7 +17,7 @@ mod tests {
             .build()
             .unwrap();
 
-       assert_eq!(rt.block_on(double(2)), 4);
+        assert_eq!(rt.block_on(double(2)), 4);
     }
 
     #[tokio::test(flavor = "multi_thread", worker_threads = 2)]

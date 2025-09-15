@@ -1,7 +1,4 @@
-use axum::{
-    routing::get,
-    Router,
-};
+use axum::{Router, routing::get};
 use std::net::SocketAddr;
 
 #[tokio::main]
@@ -34,4 +31,3 @@ async fn hello_json() -> axum::Json<HelloJson> {
 
     axum::Json(msg)
 }
-

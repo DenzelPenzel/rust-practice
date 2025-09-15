@@ -19,18 +19,14 @@ async fn main() {
     let (res1, res2) = tokio::join!(fn1(), fn2());
     println!("res1: {:?}, res2: {:?}", res1, res2);
 
-
     println!("================");
 
-    let fn2_handle = tokio::spawn(fn2()); 
+    let fn2_handle = tokio::spawn(fn2());
     fn2_handle.await.unwrap();
 
     println!("================");
 
-    let _ = tokio::join!(
-        tokio::spawn(fn3()),
-        tokio::spawn(fn3()),
-    );
+    let _ = tokio::join!(tokio::spawn(fn3()), tokio::spawn(fn3()),);
 
     println!("Done")
 }

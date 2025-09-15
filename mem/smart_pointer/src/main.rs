@@ -12,7 +12,7 @@ impl<T> SmartPointer<T> {
 
         unsafe {
             let layout = Layout::new::<T>();
-            let ptr = alloc(layout);    
+            let ptr = alloc(layout);
 
             SmartPointer {
                 ptr,
@@ -46,10 +46,10 @@ impl<T> Drop for SmartPointer<T> {
 }
 
 fn main() {
-   let mut x = SmartPointer::<u32>::new();
-   x.set(42);
-   println!("x: {}", x.get());
+    let mut x = SmartPointer::<u32>::new();
+    x.set(42);
+    println!("x: {}", x.get());
 
-   let num = Box::new(42);
-   println!("Num: {}", num);
+    let num = Box::new(42);
+    println!("Num: {}", num);
 }
