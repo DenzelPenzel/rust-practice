@@ -2,6 +2,7 @@ pub mod collections;
 pub mod graph;
 pub mod numbers;
 pub mod problems;
+mod misc;
 
 pub fn add(left: u64, right: u64) -> u64 {
     left + right
